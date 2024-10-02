@@ -1,70 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <title>Weather Forcast</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather Forecast</title>
+  </head>
+  <body>
     <div class="weather-app">
-        <div class="container"> 
-            <h3 class="brand">the weather</h3>
-            <div>
-                <h1 class="temp">16&#176;</h1>
-                <div class="city-time">
-                    <h1 class="name">London</h1>
-                    <small>
-                        <span class="time">06:09</span>
-                        -
-                        <span class="date">
-                            Monday Sept 19
-                        </span>
-                    </small>
-                </div>
-                <div class="weather">
-                    <img src="./icons/day/113.png" class="icon" alt="icon" width="50" height="50">
-                    <span class="codition">Cloudy</span>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="brand">BreezeCast</h2>
+        <div>
+          <h1 class="temp">16&#176;</h1>
+          <div class="city-time">
+            <h1 class="name">London</h1>
+            <small>
+              <span class="time">06:09</span>
+              -
+              <span class="date"> Monday Sept 19 </span>
+            </small>
+          </div>
+          <div class="weather">
+            <img
+              src="./icons/day/113.png"
+              class="icon"
+              alt="icon"
+              width="50"
+              height="50"
+            />
+            <span class="codition">Cloudy</span>
+          </div>
         </div>
-        <div class="panel">
-            <form id="locationInput">
-                <input type="text" class="search" placeholder="Search Location...">
-                <button type="submit" class="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+      </div>
+      <div class="panel">
+        <form id="locationInput">
+          <input type="text" class="search" placeholder="Search Location..." />
+          <button type="submit" class="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
 
-            <ul class="cities">
-                <li class="city">New York</li>
-                <li class="city">California</li>
-                <li class="city">Paris</li>
-                <li class="city">Tokyo</li>
-            </ul>
+        <ul class="cities">
+          <li class="city">New York</li>
+          <li class="city">California</li>
+          <li class="city">Paris</li>
+          <li class="city">Tokyo</li>
+        </ul>
 
-            <ul class="details">
-                <h4>Weather Details</h4>
-                <li>
-                    <span>Cloudy</span>
-                    <span class="cloud">89%</span>
-                </li>
-                <li>
-                    <span>Humidity</span>
-                    <span class="humidity">64%</span>
-                </li>
-                <li>
-                    <span>Winds</span>
-                    <span class="wind">8km/h</span>
-                </li>
-            </ul>
-        </div>
+        <ul class="details">
+          <h4>Weather Details</h4>
+          <li>
+            <span>Cloudy</span>
+            <span class="cloud">89%</span>
+          </li>
+          <li>
+            <span>Humidity</span>
+            <span class="humidity">64%</span>
+          </li>
+          <li>
+            <span>Winds</span>
+            <span class="wind">8km/h</span>
+          </li>
+        </ul>
+      </div>
     </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,4 +1,3 @@
-// Get all necessary elements from the DOM
 const app = document.querySelector('.weather-app');
 const temp = document.querySelector('.temp');
 const dateOutput = document.querySelector('.date');
@@ -14,26 +13,19 @@ const search = document.querySelector('.search');
 const btn = document.querySelector('.submit');
 const cities = document.querySelectorAll('.city');
 
-// Default city when the page loads
 let cityInput = "mumbai";
 
-// Add click event to each city to the panel
 cities.forEach((city) => {
     city.addEventListener('click', (e) => {
-        // Change from default city to the clicked one
         cityInput = e.target.innerHTML;
-        // console.log(cityInput);
-        // function that fetches and displays all the data from the weather API (we will write it soon)
         fetchWeatherData();
-        //Fade out the app (simple animation)
         app.style.opacity = "0";
     });
 })
 
-// Add submit event to the form
-form.addEventListener('submit', (e) => {    
+form.addEventListener('submit', (e) => {
     // If the input field (search bar) is empty, throw an alert
-    if(search.value.length == 0) {
+    if (search.value.length == 0) {
         alert('Please type in a city name');
     } else {
         // Change from default city to the one written in the input field
@@ -69,16 +61,18 @@ function dayOfTheWeek(day, month, year) {
 
 // Function that fetches and displays the data from the Weather API
 function fetchWeatherData() {
-    const weatherApi = `https://api.weatherapi.com/v1/current.json?key=95e4cb29a5b74dd8af8190618221407&q=${cityInput}`;
-    // Fetch the data and dynamicaly add the city name with template literals
-    // Take the data (Which is in JSON format) and convert it to a regular JS object
+    // YOUR API KEY HERE
+    const apiKey = "95e4cb29a5b74dd8af8190618221407";
+
+    const weatherApi = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}`;
+
     fetch(weatherApi)
         .then(response => response.json())
         .then(data => {
             // You can console log the data to see that is available
             console.log(data);
             // Lets start by adding the temperature and weather condition to the page
-            try {  
+            try {
                 temp.innerHTML = data.current.temp_c + "&#176;";
                 conditionOutput.innerHTML = data.current.condition.text;
 
@@ -93,7 +87,7 @@ function fetchWeatherData() {
             }
             // console.log(y);
             // Reformat the date into something more appealing and add it to the page
-            // Orignal Format: 2021-10-09 17:53
+            // Original Format: 2021-10-09 17:53
             // New Format: 17:53 - Friday 9, 10 2021
             dateOutput.innerHTML = `${dayOfTheWeek(d, m, y)} ${d}, ${m} ${y}`;
             timeOutput.innerHTML = time;
@@ -115,19 +109,19 @@ function fetchWeatherData() {
             // Set default time of day
             let timeOfDay = "day";
             // Get the unique id for each weather condition
-            const code = data.current.condition.code;
+            const { code } = data.current.condition;
 
             // Change to night if the night time in the city
-            if(!data.current.is_day) {
+            if (!data.current.is_day) {
                 timeOfDay = "night";
             }
 
-            if(code == 1000) {
+            if (code == 1000) {
                 // Set the background image to clear if the weather is clear
                 app.style.backgroundImage = `url(./images/${timeOfDay}/clear.jpg)`;
                 // Change the button bg color depending on if its day or night
                 btn.style.background = "#e5ba92";
-                if(timeOfDay == "night") {
+                if (timeOfDay == "night") {
                     btn.style.background = "#181e27";
                 }
             }
@@ -148,7 +142,7 @@ function fetchWeatherData() {
             ) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/cloudy.jpg)`;
                 btn.style.background = "#fa6d1b";
-                if(timeOfDay == "night") {
+                if (timeOfDay == "night") {
                     btn.style.background = "#181e27";
                 }
                 // And rain
@@ -174,22 +168,22 @@ function fetchWeatherData() {
             ) {
                 app.style.backgroundImage = `./images/${timeOfDay}/rainy.jpg`;
                 btn.style.background = "#647d75";
-                if(timeOfDay == "night") {
+                if (timeOfDay == "night") {
                     btn.style.background = "#325c80";
                 }
                 // And finally...snow
             } else {
                 app.style.backgroundImage = `./images/${timeOfDay}/snow.jpg`;
                 btn.style.background = "#4d72aa";
-                if(timeOfDay == "night") {
+                if (timeOfDay == "night") {
                     btn.style.background = "#1b1b1b";
                 }
             }
             // Fade in the page once all is done
             app.style.opacity = "1";
-            
+
         })
-        
+
         // If the user types a city that doesn't exist throw an alert
         .catch(() => {
             alert('City not found, please try again');
